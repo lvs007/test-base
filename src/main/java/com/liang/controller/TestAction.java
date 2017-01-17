@@ -12,22 +12,17 @@ import com.liang.service.UserService;
 @Controller
 public class TestAction {
 
+    @Autowired
     private UserService userService;
 
     @ResponseBody
-    @RequestMapping("/test")
     public Object test() {
         return userService.getUserName();
     }
 
     @ResponseBody
-    @RequestMapping("/person")
     public Object getPerson() {
         return userService.getPerson();
     }
 
-    @Autowired
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
 }
