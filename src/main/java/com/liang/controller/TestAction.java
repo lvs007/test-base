@@ -12,6 +12,10 @@ import com.liang.service.UserService;
 @Controller
 public class TestAction {
 
+    public TestAction(){
+        System.out.println("[TestAction]create TestAction");
+    }
+
     @Autowired
     private UserService userService;
 
@@ -23,6 +27,15 @@ public class TestAction {
     @ResponseBody
     public Object getPerson() {
         return userService.getPerson();
+    }
+
+    @ResponseBody
+    public Object getPersonList(){
+        return userService.getPersonList();
+    }
+
+    public Object getValue(){
+        return "value hhhh";
     }
 
 }

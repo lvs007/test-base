@@ -5,6 +5,8 @@ import com.liang.entity.PersonEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by mc-050 on 2016/11/22.
  */
@@ -19,6 +21,10 @@ public class UserService {
 
     public PersonEntity getPerson() {
         return userDao.getPerson();
+    }
+
+    public List<PersonEntity> getPersonList(){
+        return userDao.getPersonList();
     }
 
     @Autowired

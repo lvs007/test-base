@@ -26,4 +26,11 @@ public class UserDaoImpl extends EntityDao<PersonEntity> implements UserDao {
     public PersonEntity getPerson() {
         return get(2L);
     }
+
+    @Override
+    public List<PersonEntity> getPersonList() {
+        String sqlStr = "select * from t_person limit 0,10";
+        List<PersonEntity> personEntityList = sqlQuery(sqlStr);
+        return personEntityList;
+    }
 }

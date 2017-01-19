@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="10 seconds">
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] - %level - %logger : %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/data/logs/polaris/server.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/data/logs/polaris/server.%d.zip</fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>utf8</charset>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] - %level - %logger : %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- ERROR级别和WARN级别各自一个文件 -->
+    <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/data/logs/polaris/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/data/logs/polaris/error.%d.zip</fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <charset>utf8</charset>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] - %level - %logger : %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="warn" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/data/logs/polaris/warn.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/data/logs/polaris/warn.%d.zip</fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <charset>utf8</charset>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] - %level - %logger : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 数据库统计单独一个日志文件 -->
+    <appender name="StorageManager" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/data/logs/polaris/storageManager.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/data/logs/polaris/storageManager.log.%d.zip</fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>utf8</charset>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] - %level : %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- Druid的SQL防火墙一个文件 -->
+    <appender name="DruidWallFilter" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/data/logs/polaris/druidWallFilter.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/data/logs/polaris/druidWallFilter.log.%d.zip</fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>utf8</charset>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] - %level : %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- 系统错误日志单独文件记录 -->
+    <appender name="errorCodeLoggerAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/data/logs/polaris/errorCode.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>/data/logs/polaris/druidWallFilter.log.%i.zip</fileNamePattern>
+            <minIndex>1</minIndex>
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <encoder>
+            <charset>utf8</charset>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] - %level : %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="cn.mucang.simple.db.StorageManager" level="INFO" additivity="false">
+        <appender-ref ref="StorageManager"/>
+    </logger>
+    <logger name="com.alibaba.druid.wall.WallFilter" level="INFO" additivity="false">
+        <appender-ref ref="DruidWallFilter"/>
+    </logger>
+    <logger name="ErrorCodeLogger" level="ERROR" additivity="false">
+        <appender-ref ref="errorCodeLoggerAppender"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="file"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="warn"/>
+        <appender-ref ref="error"/>
+    </root>
+</configuration>
