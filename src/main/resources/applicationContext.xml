@@ -16,21 +16,6 @@
 
     <tx:annotation-driven proxy-target-class="true"/>
 
-    <!--<bean id="idealRequestMappingConfiguration"-->
-          <!--class="liang.mvc.handler.mapping.IdealRequestMappingConfiguration">-->
-        <!--<property name="packagePattern" value="^com.liang.controller.?"/>-->
-        <!--<property name="packageReplacement" value="/v1/"/>-->
-        <!--<property name="requestMethodPatterns">-->
-
-            <!--<map>-->
-                <!--<entry key="get.*" value="GET"/>-->
-                <!--<entry key="update.*" value="POST"/>-->
-            <!--</map>-->
-        <!--</property>-->
-    <!--</bean>-->
-    <!--&lt;!&ndash; 异常处理 &ndash;&gt;-->
-    <!--<bean  class="liang.mvc.handler.resolver.GlobalHandlerExceptionResolver"/>-->
-
     <!-- 系统配置文件读取 -->
     <!-- 定义受环境影响易变的变量 -->
     <!--<beans profile="production">-->

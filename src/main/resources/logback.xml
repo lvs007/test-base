@@ -6,9 +6,9 @@
         </encoder>
     </appender>
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/data/logs/polaris/server.log</file>
+        <file>/data/logs/test-base/server.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/data/logs/polaris/server.%d.zip</fileNamePattern>
+            <fileNamePattern>/data/logs/test-base/server.%d.zip</fileNamePattern>
             <maxHistory>10</maxHistory>
         </rollingPolicy>
         <encoder>
@@ -18,9 +18,9 @@
     </appender>
     <!-- ERROR级别和WARN级别各自一个文件 -->
     <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/data/logs/polaris/error.log</file>
+        <file>/data/logs/test-base/error.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/data/logs/polaris/error.%d.zip</fileNamePattern>
+            <fileNamePattern>/data/logs/test-base/error.%d.zip</fileNamePattern>
             <maxHistory>10</maxHistory>
         </rollingPolicy>
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -34,9 +34,9 @@
         </encoder>
     </appender>
     <appender name="warn" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/data/logs/polaris/warn.log</file>
+        <file>/data/logs/test-base/warn.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/data/logs/polaris/warn.%d.zip</fileNamePattern>
+            <fileNamePattern>/data/logs/test-base/warn.%d.zip</fileNamePattern>
             <maxHistory>10</maxHistory>
         </rollingPolicy>
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -52,9 +52,9 @@
 
     <!-- 数据库统计单独一个日志文件 -->
     <appender name="StorageManager" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/data/logs/polaris/storageManager.log</file>
+        <file>/data/logs/test-base/storageManager.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/data/logs/polaris/storageManager.log.%d.zip</fileNamePattern>
+            <fileNamePattern>/data/logs/test-base/storageManager.log.%d.zip</fileNamePattern>
             <maxHistory>10</maxHistory>
         </rollingPolicy>
         <encoder>
@@ -64,9 +64,9 @@
     </appender>
     <!-- Druid的SQL防火墙一个文件 -->
     <appender name="DruidWallFilter" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/data/logs/polaris/druidWallFilter.log</file>
+        <file>/data/logs/test-base/druidWallFilter.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/data/logs/polaris/druidWallFilter.log.%d.zip</fileNamePattern>
+            <fileNamePattern>/data/logs/test-base/druidWallFilter.log.%d.zip</fileNamePattern>
             <maxHistory>10</maxHistory>
         </rollingPolicy>
         <encoder>
@@ -76,9 +76,9 @@
     </appender>
     <!-- 系统错误日志单独文件记录 -->
     <appender name="errorCodeLoggerAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/data/logs/polaris/errorCode.log</file>
+        <file>/data/logs/test-base/errorCode.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <fileNamePattern>/data/logs/polaris/druidWallFilter.log.%i.zip</fileNamePattern>
+            <fileNamePattern>/data/logs/test-base/druidWallFilter.log.%i.zip</fileNamePattern>
             <minIndex>1</minIndex>
             <maxIndex>10</maxIndex>
         </rollingPolicy>
