@@ -90,9 +90,6 @@
             <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] - %level : %msg%n</pattern>
         </encoder>
     </appender>
-    <logger name="cn.mucang.simple.db.StorageManager" level="INFO" additivity="false">
-        <appender-ref ref="StorageManager"/>
-    </logger>
     <logger name="com.alibaba.druid.wall.WallFilter" level="INFO" additivity="false">
         <appender-ref ref="DruidWallFilter"/>
     </logger>
