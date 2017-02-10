@@ -90,9 +90,11 @@
             <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] - %level : %msg%n</pattern>
         </encoder>
     </appender>
+    <!-- 阿里云的日志-->
     <logger name="com.alibaba.druid.wall.WallFilter" level="INFO" additivity="false">
         <appender-ref ref="DruidWallFilter"/>
     </logger>
+
     <logger name="ErrorCodeLogger" level="ERROR" additivity="false">
         <appender-ref ref="errorCodeLoggerAppender"/>
     </logger>
